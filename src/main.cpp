@@ -21,7 +21,7 @@ int main() {
     if(input == "exit" || input == "exit 0"){
       break;
     }
-    if(input.find("echo ") == 0){
+    if(input.rfind("echo ",0) == 0){
       std::cout<< input.substr(5) << std::endl;
     }
 
