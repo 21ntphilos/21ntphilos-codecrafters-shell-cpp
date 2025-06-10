@@ -21,6 +21,11 @@ int main() {
     if(input == "exit" || input == "exit 0"){
       break;
     }
+    if(input.find("echo")){
+      std::cout<< input.substr(5) << std::endl;
+    }
+
+
     std::cout << input << ": command not found " << std::endl;
   }
 }
