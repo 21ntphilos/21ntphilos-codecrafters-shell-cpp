@@ -18,6 +18,8 @@ int main() {
     std::cout<<"$ ";
     std::getline(std::cin, input);
 
+    std::cout <<"INPUTE" <<input << std::endl;
+
     if(input == "exit" || input == "exit 0"){
       break;
     }
