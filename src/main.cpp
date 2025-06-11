@@ -25,7 +25,7 @@ int main() {
     }
     if(input.find("echo ",0) == 0){
       // std::cout<< input << std::endl;
-      std::cout<< input.substr(7) << std::endl;
+      std::cout << input.substr(input.find("echo ", 0)) << std::endl;
       break;
     }
 
