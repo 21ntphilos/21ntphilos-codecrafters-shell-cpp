@@ -23,9 +23,10 @@ int main() {
     if(input == "exit" || input == "exit 0"){
       break;
     }
-    if(input.rfind("$ echo ",0) == 0){
+    if(input.rfind("echo ",0) == 0){
       std::cout<< input << std::endl;
       std::cout<< input.substr(7) << std::endl;
+      break;
     }
 
 
