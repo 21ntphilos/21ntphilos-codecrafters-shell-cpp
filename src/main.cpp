@@ -7,7 +7,7 @@ int main() {
   std::cerr << std::unitbuf;
 
   // Uncomment this block to pass the first stage
-  // std::cout << "$ ";
+  std::cout << "$ ";
 
   std::string input;
   // std::getline(std::cin, input);
@@ -15,10 +15,10 @@ int main() {
   // std::cout << input << ": command not found " << std::endl;
 
   while(true){
-    std::cout<<"$ ";
+    // std::cout<<"$ ";
     std::getline(std::cin, input);
 
-    std::cout <<"INPUTE" <<input << std::endl;
+    // std::cout <<"INPUTE " <<input << std::endl;
 
     if(input == "exit" || input == "exit 0"){
       break;
