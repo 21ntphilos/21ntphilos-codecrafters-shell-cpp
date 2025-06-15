@@ -69,7 +69,7 @@ int main() {
     }
     if (command == "type")
     {
-      if (std::find(built_in_commands.begin(), built_in_commands.begin(), (args[1])) != built_in_commands.end()){
+      if (std::find(built_in_commands.begin(), built_in_commands.begin(), args[1]) != built_in_commands.end()){
         std::cout << args[1] << " is a shell builtin" << std::endl;
       } else {
         std::cout << args[1] << ": not found" << std::endl;
