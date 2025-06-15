@@ -30,7 +30,7 @@ int main() {
     if(n == 0){
       // std::cout<< input << " "<< n << std::endl;
       std::cout << input.substr(n + str.length()) << std::endl;
-      break;
+      continue;
     }
 
 
