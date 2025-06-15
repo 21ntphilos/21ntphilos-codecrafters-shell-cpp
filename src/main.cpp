@@ -23,10 +23,13 @@ int main() {
     if(input == "exit" || input == "exit 0"){
       break;
     }
-    const int n = input.find("echo ", 0);
+
+    const std::string str = "echo ";
+    const int n = input.find("echo ");
+    
     if(n == 0){
       // std::cout<< input << " "<< n << std::endl;
-      std::cout << input.substr(input.length() - 1) << std::endl;
+      std::cout << input.substr(n + str.length()) << std::endl;
       break;
     }
 
