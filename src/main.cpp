@@ -13,6 +13,7 @@ int main() {
   // std::cout << "$ ";
 
   std::vector<std::string> built_in_commands = {
+    "type",
     "echo",
     "exit",
     "cd",
@@ -41,6 +42,14 @@ int main() {
       continue;
     }
     const std::string& command = args[0];
+  
+    for(size_t i = 1; i < args.size(); ++i) {
+      if (args[i].find(' ') != std::string::npos) {
+        std::cerr << "Error: Arguments should not contain spaces." << std::endl;
+        continue;
+      }
+      std::cout << "Argument " << i << ": " << args[i] << std::endl;
+    }
 
 
     // std::cout <<"INPUTE " <<input << std::endl;
