@@ -25,7 +25,7 @@ int main() {
     }
     const int n = input.find("echo ", 0);
     if(n == 0){
-      std::cout<< input << " "<< n << std::endl;
+      // std::cout<< input << " "<< n << std::endl;
       std::cout << input.substr(input.length() - 1) << std::endl;
       break;
     }
