@@ -28,7 +28,6 @@ int main() {
     const int n = input.find("echo ");
     
     if(n == 0){
-      // std::cout<< input << " "<< n << std::endl;
       std::cout << input.substr(n + str.length()) << std::endl;
       continue;
     }
