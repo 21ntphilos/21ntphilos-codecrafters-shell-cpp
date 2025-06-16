@@ -71,9 +71,9 @@ int main() {
     {
       if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end()){
         const auto it = std::find(built_in_commands.begin(), built_in_commands.end(), args[1]);
-        std::cout << *it << std::endl;
+        // std::cout << *it << std::endl;
 
-        // std::cout << args[1] << " is a shell builtin" << std::endl;
+        std::cout << args[1] << " is a shell builtin" << std::endl;
       } else {
         std::cout << args[1] << ": not found" << std::endl;
       }
