@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <filesystem>
 
-namespace fs = std::__fs::filesystem;
+namespace fs = std::filesystem;
 
 
 std::vector<std::string> splitString(const std::string &str, char &separator)
