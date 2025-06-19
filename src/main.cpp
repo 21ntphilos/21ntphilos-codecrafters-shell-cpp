@@ -103,8 +103,11 @@ int main()
     }
     if (command == "type")
     {
-      // if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
-      // {
+      if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
+      {
+        std::cout << args[1] << " is a shell builtin" << std::endl;
+        continue;
+      }
         const char *path_env = std::getenv("PATH");
         if (!path_env)
         {
