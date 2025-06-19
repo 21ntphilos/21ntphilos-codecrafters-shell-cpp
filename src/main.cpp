@@ -116,6 +116,8 @@ int main()
 
         std::vector<std::string> paths = splitString(path_string, pathDelimiter);
         fs::path filePath = findFileinpath(args[1], paths);
+        std::cout << filePath<< std::endl;
+
         if (!filePath.empty())
         {
           std::cout << args[1] << " is " << filePath.string() << std::endl;
@@ -130,8 +132,8 @@ int main()
       // else
       // {
       //   std::cout << args[1] << ": not found" << std::endl;
-      }
       continue;
+      }
     }
 
     std::cout << input << ": command not found " << std::endl;
