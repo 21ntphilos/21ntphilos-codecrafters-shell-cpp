@@ -103,8 +103,8 @@ int main()
     }
     if (command == "type")
     {
-      if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
-      {
+      // if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
+      // {
         const char *path_env = std::getenv("PATH");
         if (!path_env)
         {
@@ -139,7 +139,7 @@ int main()
       // {
       //   std::cout << args[1] << ": not found" << std::endl;
       continue;
-      }
+      // }
     }
 
     std::cout << input << ": command not found " << std::endl;
