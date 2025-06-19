@@ -116,7 +116,7 @@ int main()
 
         std::vector<std::string> paths = splitString(path_string, pathDelimiter);
         fs::path filePath = findFileinpath(args[1], paths);
-        std::cout << filePath<< std::endl;
+        // std::cout << filePath<< std::endl;
 
         if (!filePath.empty())
         {
