@@ -45,18 +45,18 @@ fs::path findFileinpath(const std::string &fileName, const std::vector<std::stri
 #include <vector>
 #include <sstream>
 
-// // Function to split string by whitespace
-// std::vector<std::string> splitByWhitespace(const std::string &input)
-// {
-//   std::istringstream iss(input);
-//   std::vector<std::string> tokens;
-//   std::string word;
-//   while (iss >> word)
-//   {
-//     tokens.push_back(word);
-//   }
-//   return tokens;
-// }
+// Function to split string by whitespace
+std::vector<std::string> splitByWhitespace(const std::string &input)
+{
+  std::istringstream iss(input);
+  std::vector<std::string> tokens;
+  std::string word;
+  while (iss >> word)
+  {
+    tokens.push_back(word);
+  }
+  return tokens;
+}
 
 std::vector<std::string> get_builtin_commands()
 {
@@ -153,7 +153,10 @@ int main()
     }
     if (command == "type")
     {
-      if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
+      std::vector<std::string> builtins = get_builtin_commands();
+
+      // if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
+      if (std::find(builtins.begin(), builtins.end(), args[1]) != builtins.end())
       {
         std::cout << args[1] << " is a shell builtin" << std::endl;
         continue;
