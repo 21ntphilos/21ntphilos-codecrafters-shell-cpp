@@ -60,7 +60,7 @@ std::vector<std::string> splitByWhitespace(const std::string &input)
 
 std::vector<std::string> get_builtin_commands()
 {
-  std::string command = "zsh -c \"builtin\"";
+  std::string command = "zsh -c 'print ${(k)builtins}'";
   std::string result;
   std::vector<std::string> builtins = splitByWhitespace(result);
   char buffer[256];
@@ -202,14 +202,14 @@ int main()
   }
 }
 
-std::vector<std::string> splitByWhitespace(const std::string &input)
-{
-  std::istringstream iss(input);
-  std::vector<std::string> tokens;
-  std::string word;
-  while (iss >> word)
-  {
-    tokens.push_back(word);
-  }
-  return tokens;
-}
+// std::vector<std::string> splitByWhitespace(const std::string &input)
+// {
+//   std::istringstream iss(input);
+//   std::vector<std::string> tokens;
+//   std::string word;
+//   while (iss >> word)
+//   {
+//     tokens.push_back(word);
+//   }
+//   return tokens;
+// }
