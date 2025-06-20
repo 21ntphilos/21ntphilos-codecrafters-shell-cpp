@@ -155,8 +155,8 @@ int main()
     {
       std::vector<std::string> builtins = get_builtin_commands();
 
-      // if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
-      if (std::find(builtins.begin(), builtins.end(), args[1]) != builtins.end())
+      if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
+      // if (std::find(builtins.begin(), builtins.end(), args[1]) != builtins.end())
       {
         std::cout << args[1] << " is a shell builtin" << std::endl;
         continue;
