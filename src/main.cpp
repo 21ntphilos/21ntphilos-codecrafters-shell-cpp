@@ -100,9 +100,6 @@ int main()
   // std::cout << "$ ";
 
   std::vector<std::string> built_in_commands = {
-      "cp",
-      "mv",
-      "rm",
       "mkdir",
       "rmdir",
       "touch",
