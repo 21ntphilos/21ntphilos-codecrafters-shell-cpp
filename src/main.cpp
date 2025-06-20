@@ -8,7 +8,6 @@
 
 namespace fs = std::filesystem;
 
-
 std::vector<std::string> splitString(const std::string &str, char &separator)
 
 {
@@ -39,6 +38,57 @@ fs::path findFileinpath(const std::string &fileName, const std::vector<std::stri
   return fs::path();
 }
 
+#include <iostream>
+#include <cstdio>
+#include <memory>
+#include <string>
+#include <vector>
+#include <sstream>
+
+// Function to split string by whitespace
+std::vector<std::string> splitByWhitespace(const std::string &input)
+{
+  std::istringstream iss(input);
+  std::vector<std::string> tokens;
+  std::string word;
+  while (iss >> word)
+  {
+    tokens.push_back(word);
+  }
+  return tokens;
+}
+
+std::vector<std::string> get_builtin_commands()
+{
+  std::string command = "zsh -c \"builtin\"";
+  std::string result;
+  std::vector<std::string> builtins = splitByWhitespace(result);
+  char buffer[256];
+
+  std::shared_ptr<FILE> pipe(popen(command.c_str(), "r"), pclose);
+  if (!pipe)
+  {
+    std::cerr << "Failed to run command." << std::endl;
+    return std::vector<std::string>();
+  }
+
+  // Read the output from the zsh builtin command
+  while (fgets(buffer, sizeof(buffer), pipe.get()) != nullptr)
+  {
+    result += buffer;
+  }
+
+  // Split output into a vector of strings
+
+  // Output each built-in command
+  // std::cout << "Zsh Built-in Commands (" << builtins.size() << " total):\n";
+  // for (const auto &cmd : builtins)
+  // {
+  //   std::cout << "- " << cmd << "\n";
+  // }
+
+  return builtins;
+}
 
 int main()
 {
@@ -46,7 +96,7 @@ int main()
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
 
-    // Uncomment this block to pass the first stage
+  // Uncomment this block to pass the first stage
   // std::cout << "$ ";
 
   std::vector<std::string> built_in_commands = {
@@ -59,10 +109,9 @@ int main()
       "type",
       "echo",
       "exit",
-      "cd",
+      "cd", 
+      "echo",
       "pwd",
-      "ls",
-      "cat",
       "clear",
       "help"};
 
@@ -108,33 +157,33 @@ int main()
         std::cout << args[1] << " is a shell builtin" << std::endl;
         continue;
       }
-        const char *path_env = std::getenv("PATH");
-        if (!path_env)
-        {
-          std::cerr << "PATH environment variable not found." << std::endl;
-          return 1;
-        }
+      const char *path_env = std::getenv("PATH");
+      if (!path_env)
+      {
+        std::cerr << "PATH environment variable not found." << std::endl;
+        return 1;
+      }
 
-        #ifdef _WIN32
-                char pathDelimiter = ';';
-        #else
-                char pathDelimiter = ':';
-        #endif
+#ifdef _WIN32
+      char pathDelimiter = ';';
+#else
+      char pathDelimiter = ':';
+#endif
 
-        std::string path_string(path_env);
+      std::string path_string(path_env);
 
-        std::vector<std::string> paths = splitString(path_string, pathDelimiter);
-        fs::path filePath = findFileinpath(args[1], paths);
-        // std::cout << filePath<< std::endl;
+      std::vector<std::string> paths = splitString(path_string, pathDelimiter);
+      fs::path filePath = findFileinpath(args[1], paths);
+      // std::cout << filePath<< std::endl;
 
-        if (!filePath.empty())
-        {
-          std::cout << args[1] << " is " << filePath.string() << std::endl;
-        }
-        else
-        {
-          std::cout << args[1] << ": not found" << std::endl;
-        }
+      if (!filePath.empty())
+      {
+        std::cout << args[1] << " is " << filePath.string() << std::endl;
+      }
+      else
+      {
+        std::cout << args[1] << ": not found" << std::endl;
+      }
 
       //   std::cout << args[1] << " is a shell builtin" << std::endl;
       // }
@@ -149,3 +198,14 @@ int main()
   }
 }
 
+std::vector<std::string> splitByWhitespace(const std::string &input)
+{
+  std::istringstream iss(input);
+  std::vector<std::string> tokens;
+  std::string word;
+  while (iss >> word)
+  {
+    tokens.push_back(word);
+  }
+  return tokens;
+}
