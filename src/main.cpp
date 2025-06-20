@@ -153,7 +153,7 @@ int main()
     }
     if (command == "type")
     {
-      std::vector<std::string> builtins = get_builtin_commands();
+      // std::vector<std::string> builtins = get_builtin_commands();
 
       if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
       // if (std::find(builtins.begin(), builtins.end(), args[1]) != builtins.end())
