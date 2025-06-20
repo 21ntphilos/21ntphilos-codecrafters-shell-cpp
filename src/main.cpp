@@ -100,20 +100,13 @@ int main()
   // std::cout << "$ ";
 
   std::vector<std::string> built_in_commands = {
-      "mkdir",
-      "rmdir",
-      "touch",
-      "type",
-      "echo",
-      "exit",
-      "cd", 
-      "echo",
-      "cat"
-      "pwd",
-      "clear",
-      "help"};
-
-  std::string input;
+    "type",
+    "echo",
+    "exit",
+    "cd",
+    "pwd"
+  };
+    std::string input;
   // std::getline(std::cin, input);
 
   // std::cout << input << ": command not found " << std::endl;
