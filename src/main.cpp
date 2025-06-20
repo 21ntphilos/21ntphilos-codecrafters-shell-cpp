@@ -45,18 +45,18 @@ fs::path findFileinpath(const std::string &fileName, const std::vector<std::stri
 #include <vector>
 #include <sstream>
 
-// Function to split string by whitespace
-std::vector<std::string> splitByWhitespace(const std::string &input)
-{
-  std::istringstream iss(input);
-  std::vector<std::string> tokens;
-  std::string word;
-  while (iss >> word)
-  {
-    tokens.push_back(word);
-  }
-  return tokens;
-}
+// // Function to split string by whitespace
+// std::vector<std::string> splitByWhitespace(const std::string &input)
+// {
+//   std::istringstream iss(input);
+//   std::vector<std::string> tokens;
+//   std::string word;
+//   while (iss >> word)
+//   {
+//     tokens.push_back(word);
+//   }
+//   return tokens;
+// }
 
 std::vector<std::string> get_builtin_commands()
 {
@@ -111,6 +111,7 @@ int main()
       "exit",
       "cd", 
       "echo",
+      "cat"
       "pwd",
       "clear",
       "help"};
