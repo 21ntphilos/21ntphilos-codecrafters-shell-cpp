@@ -8,35 +8,9 @@
 
 namespace fs = std::filesystem;
 
-std::vector<std::string> splitString(const std::string &str, char &separator)
-
-{
-
-  std::string token;
-  std::vector<std::string> filepaths;
-  std::stringstream pathstreams(str);
-
-  while (std::getline(pathstreams, token, separator))
-  {
-    filepaths.push_back(token);
-  }
-  return filepaths;
-}
-
-fs::path findFileinpath(const std::string &fileName, const std::vector<std::string> &paths)
-{
-
-  for (const std::string &path : paths)
-  {
-    fs::path fullPath = fs::path(path) / fileName;
-    if (fs::exists(fullPath) && fs::is_regular_file(fullPath))
-    {
-      return fullPath;
-    }
-  }
-
-  return fs::path();
-}
+std::string joinVector(const std::vector<std::string> &vec, char separator);
+std::vector<std::string> splitString(const std::string &str, char &separator);
+fs::path findFileinpath(const std::string &fileName, const std::vector<std::string> &paths);
 
 int main()
 {
@@ -150,6 +124,35 @@ int main()
   }
 }
 
+std::vector<std::string> splitString(const std::string &str, char &separator)
+
+{
+
+  std::string token;
+  std::vector<std::string> filepaths;
+  std::stringstream pathstreams(str);
+
+  while (std::getline(pathstreams, token, separator))
+  {
+    filepaths.push_back(token);
+  }
+  return filepaths;
+}
+
+fs::path findFileinpath(const std::string &fileName, const std::vector<std::string> &paths)
+{
+
+  for (const std::string &path : paths)
+  {
+    fs::path fullPath = fs::path(path) / fileName;
+    if (fs::exists(fullPath) && fs::is_regular_file(fullPath))
+    {
+      return fullPath;
+    }
+  }
+
+  return fs::path();
+}
 
 std::string joinVector(const std::vector<std::string> &vec, char separator)
 {
