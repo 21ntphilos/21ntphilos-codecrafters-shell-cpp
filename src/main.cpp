@@ -45,14 +45,18 @@ int main()
   std::cerr << std::unitbuf;
 
   std::vector<std::string> built_in_commands = {
-    "type",
-    "echo",
-    "exit",
-    "cd",
-    "pwd"
-  };
-    std::string input;
+      "type",
+      "echo",
+      "exit",
+      "cd",
+      "pwd"};
+  std::string input;
 
+#ifdef _WIN32
+  char pathDelimiter = ';';
+#else
+  char pathDelimiter = ':';
+#endif
 
   while (true)
   {
@@ -61,6 +65,9 @@ int main()
     std::stringstream ss(input);
     std::vector<std::string> args;
     std::string word;
+
+    const char *path_env = std::getenv("PATH");
+
     while (ss >> word)
     {
       args.push_back(word);
@@ -88,7 +95,7 @@ int main()
     {
 
       if (std::find(built_in_commands.begin(), built_in_commands.end(), args[1]) != built_in_commands.end())
-      
+
       {
         std::cout << args[1] << " is a shell builtin" << std::endl;
         continue;
@@ -100,17 +107,10 @@ int main()
         return 1;
       }
 
-#ifdef _WIN32
-      char pathDelimiter = ';';
-#else
-      char pathDelimiter = ':';
-#endif
-
       std::string path_string(path_env);
 
       std::vector<std::string> paths = splitString(path_string, pathDelimiter);
       fs::path filePath = findFileinpath(args[1], paths);
-   
 
       if (!filePath.empty())
       {
@@ -120,12 +120,59 @@ int main()
       {
         std::cout << args[1] << ": not found" << std::endl;
       }
-    
+
       continue;
       // }
     }
 
+    if (path_env)
+    {
+      std::string path_string(path_env);
+
+      std::vector<std::string> paths = splitString(path_string, pathDelimiter);
+      fs::path filePath = findFileinpath(args[1], paths);
+
+      if (!filePath.empty())
+      {
+        std::cout << args[1] << " is " << filePath.string() << std::endl;
+        args.erase(args.begin());
+        std::string commandLine = joinVector(args, ' ');
+
+        std::system(filePath.string().append(" " + commandLine).c_str());
+      }
+      else
+      {
+        std::cout << args[1] << ": not found" << std::endl;
+      }
+      continue;
+    }
     std::cout << input << ": command not found " << std::endl;
   }
 }
 
+
+std::string joinVector(const std::vector<std::string> &vec, char separator)
+{
+  // std::string result;
+  // for (const auto &str : vec)
+  // {
+  //   if (!result.empty())
+  //   {
+  //     result += separator; // here there are more memory allocations than necessary
+  //   }
+  //   result += str;
+  // }
+  // return result;
+
+  std::ostringstream result;
+  for (const auto &str : vec)// use auto to loop over elements of the vector and avoid type issues
+  // use size_t(unsigned integer type) for indexing
+  {
+    if (!result.str().empty())
+    {
+      result << separator;
+    }
+    result << str;
+  }
+  return result.str();
+}
