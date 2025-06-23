@@ -117,6 +117,11 @@ int main()
         // std::string commandLine = joinVector(args, ' ');
 
         std::cout << "Program was passed "<< args.size() <<" args (including program name)." << std::endl;
+        for(size_t i = 0; args.size() > i; i++){
+          std::string add = (i == 0) ? " (program name)" : "";
+          std::cout << " Arg #"<<i<< add << ":" << args[i] << std::endl;
+        }
+        std::cout << "Program Signature: "
         // std::system(filePath.string().append(" " + commandLine).c_str());
       }
       else
