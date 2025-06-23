@@ -108,15 +108,16 @@ int main()
       std::string path_string(path_env);
 
       std::vector<std::string> paths = splitString(path_string, pathDelimiter);
-      fs::path filePath = findFileinpath(args[1], paths);
+      fs::path filePath = findFileinpath(args[0], paths);
 
       if (!filePath.empty())
       {
-        std::cout << args[1] << " is " << filePath.string() << std::endl;
+        std::cout << args[0] << " is " << filePath.string() << std::endl;
         args.erase(args.begin());
         std::string commandLine = joinVector(args, ' ');
 
-        std::system(filePath.string().append(" " + commandLine).c_str());
+        std::cout << "Program was passed "<< args.size() <<" args (including program name)." << std::endl;
+        // std::system(filePath.string().append(" " + commandLine).c_str());
       }
       else
       {
