@@ -121,7 +121,7 @@ int main()
           std::string add = (i == 0) ? " (program name)" : "";
           std::cout << " Arg #"<<i<< add << ":" << args[i] << std::endl;
         }
-        std::cout << "Program Signature: "
+        std::cout << "Program Signature: " <<std::endl;
         // std::system(filePath.string().append(" " + commandLine).c_str());
       }
       else
