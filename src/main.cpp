@@ -4,11 +4,11 @@
 #include <sstream>
 #include <algorithm>
 #include <cstdlib>
-// #include <filesystem>
+#include <filesystem>
 #include <experimental/filesystem>
 
-// namespace fs = std::filesystem;
-namespace fs = std::experimental::filesystem; // Uncomment this line if using experimental filesystem
+namespace fs = std::filesystem;
+// namespace fs = std::experimental::filesystem; // Uncomment this line if using experimental filesystem
 
 
 std::string joinVector(const std::vector<std::string> &vec, char separator);
