@@ -113,8 +113,9 @@ int main()
       if (!filePath.empty())
       {
         // std::cout << args[0] << " is " << filePath.string() << std::endl;
-        args.erase(args.begin());
-        std::string commandLine = joinVector(args, ' ');
+        std::vector<std::string> new_args = args;
+        new_args.erase(new_args.begin());
+        std::string commandLine = joinVector(new_args, ' ');
 
         // std::cout << "Program was passed "<< args.size() <<" args (including program name)." << std::endl;
         // for(size_t i = 0; args.size() > i; i++){
