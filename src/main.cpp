@@ -4,9 +4,12 @@
 #include <sstream>
 #include <algorithm>
 #include <cstdlib>
-#include <filesystem>
+// #include <filesystem>
+#include <experimental/filesystem>
 
-namespace fs = std::filesystem;
+// namespace fs = std::filesystem;
+namespace fs = std::experimental::filesystem; // Uncomment this line if using experimental filesystem
+
 
 std::string joinVector(const std::vector<std::string> &vec, char separator);
 std::vector<std::string> splitString(const std::string &str, char &separator);
@@ -57,11 +60,12 @@ int main()
       break;
     }
 
-    const std::string str = "echo ";
-    const int n = input.find("echo ");
+    
 
     if (command == "echo")
     {
+      const std::string str = "echo ";
+      const int n = input.find("echo ");
       std::cout << input.substr(n + str.length()) << std::endl;
       continue;
     }
