@@ -9,7 +9,6 @@
 
 namespace fs = std::filesystem;
 
-
 std::string joinVector(const std::vector<std::string> &vec, char separator);
 std::vector<std::string> splitString(const std::string &str, char &separator);
 fs::path findFileinpath(const std::string &fileName, const std::vector<std::string> &paths);
@@ -59,13 +58,15 @@ int main()
       break;
     }
 
-    if (command == "pwd"){
+    if (command == "pwd")
+    {
       fs::path currentPath = fs::current_path();
       std::cout << currentPath.string() << std::endl;
       continue;
     }
 
-    if (command == "cd"){
+    if (command == "cd")
+    {
 
       if (args.size() < 2)
       {
@@ -74,13 +75,15 @@ int main()
       }
 
       const fs::path newPath = args[1];
-      if(newPath.string()== "~"){
+      if (newPath.string() == "~")
+      {
 
         const char *home_env = std::getenv("HOME");
         if (home_env)
         {
           fs::path homePath(home_env);
-          if(fs::exists(homePath) && fs::is_directory(homePath)){
+          if (fs::exists(homePath) && fs::is_directory(homePath))
+          {
             fs::current_path(homePath);
             continue;
           }
@@ -97,7 +100,8 @@ int main()
         }
       }
 
-      if(fs::exists(newPath) && fs::is_directory(newPath)){
+      if (fs::exists(newPath) && fs::is_directory(newPath))
+      {
         fs::current_path(newPath);
       }
       else
@@ -105,7 +109,7 @@ int main()
         std::cerr << "cd: " << newPath.string() << ": No such file or directory" << std::endl;
         continue;
       }
-   
+
       continue;
     }
 
@@ -119,11 +123,12 @@ int main()
           std::cout << " ";
         }
       }
-
       const std::string str = "echo ";
       const int n = input.find("echo ");
-      std::cout << args[1] <<std::endl;
-      // std::cout << input.substr(n + str.length()) << std::endl;
+      std::string dipaly = input.length() >= 2 && input.front() == '"' && input.back() == '"' || input.front() == '\'' && input.back() == '\'' ? input.substr(1, input.length() - 2) : input.substr(n + std::string("echo ").length());
+
+      // std::cout << args[1] <<std::endl;
+      std::cout << input.substr(n + str.length()) << std::endl;
       continue;
     }
     if (command == "type")
