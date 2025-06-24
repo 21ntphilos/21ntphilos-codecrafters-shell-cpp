@@ -8,7 +8,6 @@
 #include <experimental/filesystem>
 
 namespace fs = std::filesystem;
-// namespace fs = std::experimental::filesystem; // Uncomment this line if using experimental filesystem
 
 
 std::string joinVector(const std::vector<std::string> &vec, char separator);
@@ -60,8 +59,6 @@ int main()
       break;
     }
 
-    
-
     if (command == "echo")
     {
       const std::string str = "echo ";
@@ -112,18 +109,6 @@ int main()
 
       if (!filePath.empty())
       {
-        // std::cout << args[0] << " is " << filePath.string() << std::endl;
-        // std::vector<std::string> new_args = args;
-        // new_args.erase(new_args.begin());
-        // std::string commandLine = joinVector(new_args, ' ');
-
-        // std::cout << "Program was passed "<< args.size() <<" args (including program name)." << std::endl;
-          // std::string add = (i == 0) ? " (program name)" : "";
-        // std::cout << "Arg #0 (program name): " << args[1] << std::endl;
-        // for(size_t i = 0; args.size() > i; i++){
-        // }
-        // std::cout << "Program Signature: " <<std::endl;
-        // std::system(filePath.string().append(" " + commandLine).c_str());
         std::system(input.c_str());
       }
       else
@@ -181,7 +166,7 @@ std::string joinVector(const std::vector<std::string> &vec, char separator)
   // return result;
 
   std::ostringstream result;
-  for (const auto &str : vec)// use auto to loop over elements of the vector and avoid type issues
+  for (const auto &str : vec) // use auto to loop over elements of the vector and avoid type issues
   // use size_t(unsigned integer type) for indexing
   {
     if (!result.str().empty())
