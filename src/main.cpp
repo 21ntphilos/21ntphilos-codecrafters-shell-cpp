@@ -59,20 +59,43 @@ int main()
       break;
     }
 
-    if (command == "pwd")
-    {
+    if (command == "pwd"){
       fs::path currentPath = fs::current_path();
       std::cout << currentPath.string() << std::endl;
       continue;
     }
-    if (command == "cd")
-    {
+
+    if (command == "cd"){
+
       if (args.size() < 2)
       {
         std::cerr << "cd: missing argument" << std::endl;
         continue;
       }
+
       const fs::path newPath = args[1];
+      if(newPath.string()== "~"){
+
+        const char *home_env = std::getenv("HOME");
+        if (home_env)
+        {
+          fs::path homePath(home_env);
+          if(fs::exists(homePath) && fs::is_directory(homePath)){
+            fs::current_path(homePath);
+            continue;
+          }
+          else
+          {
+            std::cerr << "cd: " << homePath.string() << ": No such file or directory" << std::endl;
+            continue;
+          }
+        }
+        else
+        {
+          std::cerr << "cd: HOME environment variable not set" << std::endl;
+          continue;
+        }
+      }
 
       if(fs::exists(newPath) && fs::is_directory(newPath)){
         fs::current_path(newPath);
