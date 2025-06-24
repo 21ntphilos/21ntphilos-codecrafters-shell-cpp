@@ -119,7 +119,7 @@ int main()
 
         // std::cout << "Program was passed "<< args.size() <<" args (including program name)." << std::endl;
           // std::string add = (i == 0) ? " (program name)" : "";
-        std::cout << "Arg #0 (program name): " << args[1] << std::endl;
+        // std::cout << "Arg #0 (program name): " << args[1] << std::endl;
         // for(size_t i = 0; args.size() > i; i++){
         // }
         // std::cout << "Program Signature: " <<std::endl;
