@@ -123,7 +123,8 @@ int main()
         // for(size_t i = 0; args.size() > i; i++){
         // }
         // std::cout << "Program Signature: " <<std::endl;
-        std::system(filePath.string().append(" " + commandLine).c_str());
+        // std::system(filePath.string().append(" " + commandLine).c_str());
+        std::system(input.c_str());
       }
       else
       {
