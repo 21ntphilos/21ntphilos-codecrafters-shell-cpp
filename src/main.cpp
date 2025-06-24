@@ -128,11 +128,12 @@ int main()
       }
       else
       {
-        std::cout << args[1] << ": not found" << std::endl;
+        std::cout << args[0] << ": command not found" << std::endl;
       }
       continue;
     }
     std::cout << input << ": command not found " << std::endl;
+    continue;
   }
 }
 
