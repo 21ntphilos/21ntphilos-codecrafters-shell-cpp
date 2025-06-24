@@ -111,9 +111,19 @@ int main()
 
     if (command == "echo")
     {
+      for (size_t i = 1; i < args.size(); ++i)
+      {
+        std::cout << args[i];
+        if (i < args.size() - 1)
+        {
+          std::cout << " ";
+        }
+      }
+
       const std::string str = "echo ";
       const int n = input.find("echo ");
-      std::cout << input.substr(n + str.length()) << std::endl;
+      std::cout << args[1] <<std::endl;
+      // std::cout << input.substr(n + str.length()) << std::endl;
       continue;
     }
     if (command == "type")
