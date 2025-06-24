@@ -65,6 +65,34 @@ int main()
       std::cout << currentPath.string() << std::endl;
       continue;
     }
+    if (command == "cd")
+    {
+      if (args.size() < 2)
+      {
+        std::cerr << "cd: missing argument" << std::endl;
+        continue;
+      }
+      const fs::path newPath = args[1];
+
+      if(fs::exists(newPath) && fs::is_directory(newPath)){
+        fs::current_path(newPath);
+      }
+      else
+      {
+        std::cerr << "cd: " << newPath.string() << ": No such file or directory" << std::endl;
+        continue;
+      }
+
+      // try
+      // {
+      //   fs::current_path(newPath);
+      // }
+      // catch (const fs::filesystem_error &e)
+      // {
+      //   std::cerr << "cd: " << e.what() << std::endl;
+      // }
+      continue;
+    }
 
     if (command == "echo")
     {
