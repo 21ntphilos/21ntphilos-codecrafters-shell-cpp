@@ -59,6 +59,13 @@ int main()
       break;
     }
 
+    if (command == "pwd")
+    {
+      fs::path currentPath = fs::current_path();
+      std::cout << currentPath.string() << std::endl;
+      continue;
+    }
+
     if (command == "echo")
     {
       const std::string str = "echo ";
