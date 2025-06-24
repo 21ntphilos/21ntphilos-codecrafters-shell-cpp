@@ -82,15 +82,7 @@ int main()
         std::cerr << "cd: " << newPath.string() << ": No such file or directory" << std::endl;
         continue;
       }
-
-      // try
-      // {
-      //   fs::current_path(newPath);
-      // }
-      // catch (const fs::filesystem_error &e)
-      // {
-      //   std::cerr << "cd: " << e.what() << std::endl;
-      // }
+   
       continue;
     }
 
