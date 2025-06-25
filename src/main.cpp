@@ -115,18 +115,19 @@ int main()
 
     if (command == "echo")
     {
-      for (size_t i = 1; i < args.size(); ++i)
-      {
-        std::cout << args[i];
-        if (i < args.size() - 1)
-        {
-          std::cout << " ";
-        }
-      }
+      // for (size_t i = 1; i < args.size(); ++i)
+      // {
+      //   std::cout << args[i];
+      //   if (i < args.size() - 1)
+      //   {
+      //     std::cout << " ";
+      //   }
+      // }
       const std::string str = "echo ";
       const int n = input.find("echo ");
-      std::string display = input.length() >= 2 && input.front() == '"' && input.back() == '"' || input.front() == '\'' && input.back() == '\'' ? input.substr(1, input.length() - 2) : input.substr(n + std::string("echo ").length());
+      // std::string display = input.length() >= 2 && input.front() == '"' && input.back() == '"' || input.front() == '\'' && input.back() == '\'' ? input.substr(1, input.length() - 2) : input.substr(n + std::string("echo ").length());
 
+      std::string display = args[1];
       // std::cout << args[1] <<std::endl;
       std::cout << display << std::endl;
       continue;
