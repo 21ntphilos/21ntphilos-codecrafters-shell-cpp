@@ -125,9 +125,9 @@ int main()
       // }
       const std::string str = "echo ";
       const int n = input.find("echo ");
-      // std::string display = input.length() >= 2 && input.front() == '"' && input.back() == '"' || input.front() == '\'' && input.back() == '\'' ? input.substr(1, input.length() - 2) : input.substr(n + std::string("echo ").length());
+      std::string display = input.length() >= 2 && input.front() == '"' && input.back() == '"' || input.front() == '\'' && input.back() == '\'' ? input.substr(1, input.length() - 2) : input.substr(n + std::string("echo ").length());
 
-      std::string display = args[1];
+      // std::string display = args[1];
       // std::cout << args[1] <<std::endl;
       std::cout << display << std::endl;
       continue;
