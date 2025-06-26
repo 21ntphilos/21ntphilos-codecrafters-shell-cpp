@@ -125,7 +125,16 @@ int main()
       // }
       const std::string str = "echo ";
       const int n = input.find("echo ");
-      std::string display = input.length() >= 2 && input.front() == '"' && input.back() == '"' || input.front() == '\'' && input.back() == '\'' ? 
+      std::string display = input.length() >= 2 
+      // && 
+      // input.front() == '"' 
+      // && 
+      // input.back() == '"' 
+      // || 
+      // input.front() == '\'' 
+      // && 
+      // input.back() == '\'' 
+      ? 
       // input.substr(n + 1, input.length() - 3) 
       "CARAHAN"
       : 
