@@ -132,7 +132,7 @@ int main()
                                     echoArg.front() == '\'' &&
                                         echoArg.back() == '\''
                                 ?
-                                input.substr(n + 1, input.length() - 2)
+                                echoArg.substr(n + 1, input.length() - 2)
                                 // "CARAHAN"
                                 : 
                                 // "LIYANA";
