@@ -127,13 +127,13 @@ int main()
       const int n = input.find("echo ");
       std::string display = input.length() >= 2 
       && 
-     ( input.front() == '"' 
+     ( (input.front() == '"' 
       && 
-      input.back() == '"' 
+      input.back() == '"' )
       || 
-      input.front() == '\'' 
+      (input.front() == '\'' 
       && 
-      input.back() == '\'' )
+      input.back() == '\'' ))
       ? 
       // input.substr(n + 1, input.length() - 3) 
       "CARAHAN"
