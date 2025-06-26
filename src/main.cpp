@@ -132,10 +132,11 @@ int main()
                                     echoArg.front() == '\'' &&
                                         echoArg.back() == '\''
                                 ?
-                                // input.substr(n + 1, input.length() - 3)
-                                "CARAHAN"
-                                : "LIYANA";
-      // input.substr(n + str.length());
+                                input.substr(n + 1, input.length() - 2)
+                                // "CARAHAN"
+                                : 
+                                // "LIYANA";
+      input.substr(n + str.length());
 
       // std::cout << args[1] <<std::endl;
       std::cout << display << std::endl;
